@@ -80,13 +80,13 @@ class App extends React.Component {
         const {products}=this.state;
         const index=products.indexOf(product);
         console.log(index);
-        products[index].qty+=1;
+        const dataRef=this.db.collection('product').doc(products[index].id);
 
-        this.setState(
-            {
-                products:products,
-            }
-        );
+        dataRef.update(
+          {
+            qty:products[index].qty+=1
+          }
+        )
     }
 
 
@@ -97,13 +97,15 @@ class App extends React.Component {
         console.log(index);
 
         if(products[index].qty!==0)
-        products[index].qty-=1;
+        {
+          const dataRef=this.db.collection('product').doc(products[index].id);
 
-        this.setState(
+          dataRef.update(
             {
-                products:products
+              qty:products[index].qty-=1
             }
-        );
+          )
+        }
 
        
     }
@@ -182,7 +184,7 @@ class App extends React.Component {
 
               {loading && <h1>loading....</h1>}
                  <div style={{fontSize:20 ,padding:10}}>Total:{this.getPrice()}
-                 <button onClick={addProdcut}>Add product</button>
+                 <button onClick={this.addProdcut} style={{padding:10 , fontSize:20}}>Add product</button>
         </div>
             </div>
       
