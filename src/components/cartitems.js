@@ -29,10 +29,12 @@ class CartItem extends React.Component
         if(this.state.qty==0)  return ;
         else{
             console.log('decreasing');
-            this.setState(
-                {
-                    qty:this.state.qty-1
+            this.setState((prevState)=>
+            {
+               return  {
+                    qty:prevState.qty-1
                 }
+            }
             );
         }
     }
@@ -79,7 +81,8 @@ const styles=
     {
         height:110,
         width:110,
-        borderRadius:5
+        borderRadius:5,
+        backgroundColor:'#777'
     }
 }
 
