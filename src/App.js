@@ -1,13 +1,11 @@
 import React from 'react';
-import CartItem from './components/cartitems'
+import Cart from './components/cart'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-   <CartItem />
-   <CartItem />
-   <CartItem />
+   <Cart />
 
     </div>
   );

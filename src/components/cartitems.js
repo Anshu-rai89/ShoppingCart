@@ -6,42 +6,47 @@ class CartItem extends React.Component
     constructor()
     {
         super();
-        this.state=
-        {
-            title:'Phone',
-            qty:1,
-            price:999,
-            img:''
-        }
+        
       
     }
 
-    increase =()=> 
-            { console.log('increseing ',this.state);
-                  this.setState(
-                      {
-                          qty:this.state.qty+1
-                      }
-                  );
-            }
-    decrease=()=>
-    {
-        if(this.state.qty==0)  return ;
-        else{
-            console.log('decreasing');
-            this.setState((prevState)=>
-            {
-               return  {
-                    qty:prevState.qty-1
-                }
-            }
-            );
-        }
-    }
+    // increase =()=> 
+    //         { console.log('increseing ',this.state);
+    //               this.setState(
+    //                   {
+    //                       qty:this.state.qty+1
+    //                   }
+    //               );
+    //               this.setState(
+    //                 {
+    //                     qty:this.state.qty+1
+    //                 }
+    //             );
+    //             this.setState(
+    //                 {
+    //                     qty:this.state.qty+1
+    //                 }
+    //             );
+    //         }
+    // decrease=()=>
+    // {
+    //     if(this.state.qty==0)  return ;
+    //     else{
+    //         console.log('decreasing');
+    //         this.setState((prevState)=>
+    //         {
+    //            return  {
+    //                 qty:prevState.qty-1
+    //             }
+    //         }
+    //         );
+    //     }
+    // }
    
-    render()
+    render(props)
         { 
-            const  {title,qty,price,img}=this.state;
+            const {p}=props.product;
+            console.log('rendering');
             
            return (
                <div className='cart-item' >
@@ -49,9 +54,9 @@ class CartItem extends React.Component
                        <img   style={styles.image}/>
                    </div>
                    <div className='right-block'>
-           <div style={{fontSize:20}} >{title}</div>
-           <div style={{color:'#777'}} >Rs {price}</div>
-           <div style={{color:'#777'}} >{qty}</div>
+           <div style={{fontSize:20}} >{props.name}</div>
+           <div style={{color:'#777'}} >Rs {p.price}</div>
+           <div style={{color:'#777'}} >{p.qty}</div>
                     <div className='cart-item-actions'>
                         <img className='action-icons'
                         alt='increase'
