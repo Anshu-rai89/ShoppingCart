@@ -16,22 +16,22 @@ class App extends React.Component {
                 name:'phone',
                 qty:1,
                 price:999,
-                img:'',
+                img:'https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=666&q=80 666w' ,
                 id:1
             },
             {
                 name:'laptop',
                 qty:20,
                 price:32000,
-                img:'',
+                img:'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3151&q=80 3151w',
                 id:2
 
             },
         {
-            name:'mobile',
+            name:'watch',
             qty:1000,
-            price:10000,
-            img:'',
+            price:100,
+            img: 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80 334w',
             id:3
         }]
       
@@ -82,7 +82,7 @@ class App extends React.Component {
         );
     }
 
-    getcount()
+    getCount()
     {  var count=0;
       const {products}=this.state;
 
@@ -93,13 +93,26 @@ class App extends React.Component {
       return count;
     }
 
+    getPrice()
+    {
+      let total=0;
+      const {products}=this.state;
+
+      products.map((product)=>
+      {
+        total=total+product.qty*product.price;
+      });
+
+      return total;
+    }
+
     render()
         {
 
           const {products}=this.state;
           return (
             <div className="App">
-              <Navbar count={this.getcount()}/>
+              <Navbar count={this.getCount()}/>
               <Cart 
               products={products} 
               key={products.id}
@@ -107,8 +120,10 @@ class App extends React.Component {
               onDecrease={this.decreaseHandler}
               onRemove={this.deleteHandler}
               />
-
+                 <div style={{fontSize:20 ,padding:10}}>Total:{this.getPrice()}
+        </div>
             </div>
+      
           );
        }
 }
