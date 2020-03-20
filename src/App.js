@@ -16,6 +16,7 @@ class App extends React.Component {
             loading:true
       
     }
+    this.db=firebase.firestore();
   }
 
 
@@ -48,8 +49,7 @@ class App extends React.Component {
     //       loading:false
     //     }
     //   );
-    firebase
-    .firestore()
+     this.db
     .collection('product')
     .onSnapshot((snapshots)=>
     {
@@ -104,6 +104,8 @@ class App extends React.Component {
                 products:products
             }
         );
+
+       
     }
 
     deleteHandler=(product)=>
@@ -142,7 +144,27 @@ class App extends React.Component {
 
       return total;
     }
-
+   addProdcut=()=>
+   {
+      this.db
+      .collection('product')
+      .add(
+        {
+          name:'washing machine',
+          qty:1,
+          price:8000,
+          img:'https://images-na.ssl-images-amazon.com/images/I/81HApTZ8D8L._SY879_.jpg'
+        }
+      )
+      .then((docRef)=>
+      {
+        console.log('product added',docRef);
+      })
+      .catch((err)=>
+      {
+        console.log('error',err);
+      })
+   }
     render()
         {
 
@@ -160,6 +182,7 @@ class App extends React.Component {
 
               {loading && <h1>loading....</h1>}
                  <div style={{fontSize:20 ,padding:10}}>Total:{this.getPrice()}
+                 <button onClick={addProdcut}>Add product</button>
         </div>
             </div>
       
