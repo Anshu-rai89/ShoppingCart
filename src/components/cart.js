@@ -16,20 +16,23 @@ class cart extends React.Component
                 name:'phone',
                 qty:1,
                 price:999,
-                img:''
+                img:'',
+                id:1
             },
             {
                 name:'laptop',
                 qty:20,
                 price:32000,
-                img:''
+                img:'',
+                id:2
 
             },
         {
             name:'mobile',
             qty:1000,
             price:10000,
-            img:''
+            img:'',
+            id:3
         }]
       
     }
@@ -44,7 +47,7 @@ class cart extends React.Component
             {
                 product.map((product)=>
                     {
-                    return (<CartItems product={product}/>
+                    return (<CartItems product={product} key={product.id}/>
                     )}
                     )
             }
