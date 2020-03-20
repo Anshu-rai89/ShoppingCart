@@ -87,7 +87,16 @@ class App extends React.Component {
             qty:products[index].qty+=1
           }
         )
-    }
+        .then(()=>
+          {
+            console.log('updated succussfully');
+          })
+          .catch((err)=>
+          {
+            console.log('error',err);
+          })
+        }
+    
 
 
     decreaseHandler =(product)=>
@@ -105,22 +114,32 @@ class App extends React.Component {
               qty:products[index].qty-=1
             }
           )
+          .then(()=>
+          {
+            console.log('updated succussfully');
+          })
+          .catch((err)=>
+          {
+            console.log('error',err);
+          })
         }
 
        
     }
 
-    deleteHandler=(product)=>
+    deleteHandler=(id)=>
     {
         const {products}=this.state;
-        const index=products.indexOf(product);
-        products.splice(index,1);
-
-        this.setState(
-            {
-                products:products
-            }
-        );
+        const dataRef=this.db.collection('product').doc(id);
+        dataRef.delete()
+        .then(()=>
+        {
+          console.log('deletd succesfully');
+        })
+        .catch((error)=>
+        {
+          console.log('error',error);
+        })
     }
 
     getCount()

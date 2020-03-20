@@ -65,7 +65,7 @@ const CartItem= (props) =>
                         <img className='action-icons'
                         alt='remove'
                         src='https://image.flaticon.com/icons/svg/1214/1214428.svg'
-                        onClick={()=>props.onRemove(props.product)}
+                        onClick={()=>props.onRemove(props.product.id)}
                         />
                     </div>
                    </div>
