@@ -69,6 +69,19 @@ class cart extends React.Component
         );
     }
 
+    deleteHandler=(product)=>
+    {
+        const {products}=this.state;
+        const index=products.indexOf(product);
+        products.splice(index,1);
+
+        this.setState(
+            {
+                products:products
+            }
+        );
+    }
+
     render()
         {
 
@@ -78,7 +91,14 @@ class cart extends React.Component
             {
                 products.map((product)=>
                     {
-                    return (<CartItems product={product} key={product.id} onIncrease={this.increaseHandler} onDecrease={this.decreaseHandler}/>
+                    return (
+                    <CartItems 
+                    product={product}
+                    key={product.id}
+                    onIncrease={this.increaseHandler} 
+                    onDecrease={this.decreaseHandler}
+                    onRemove={this.deleteHandler}
+                    />
                     )}
                     )
             }

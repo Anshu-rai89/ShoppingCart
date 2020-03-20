@@ -65,6 +65,7 @@ class CartItem extends React.Component
                         <img className='action-icons'
                         alt='remove'
                         src='https://image.flaticon.com/icons/svg/1214/1214428.svg'
+                        onClick={()=>this.props.onRemove(this.props.product)}
                         />
                     </div>
                    </div>
