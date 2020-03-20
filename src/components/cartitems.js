@@ -3,13 +3,7 @@ import React from 'react';
 
 class CartItem extends React.Component
 {
-    constructor()
-    {
-        super();
-        
-      
-    }
-
+   
     // increase =()=> 
     //         { console.log('increseing ',this.state);
     //               this.setState(
@@ -43,9 +37,9 @@ class CartItem extends React.Component
     //     }
     // }
    
-    render(props)
-        { 
-            const {p}=props.product;
+    render()
+        {   console.log('this',this);
+            const {name, qty,price,img}=this.props.product;
             console.log('rendering');
             
            return (
@@ -54,9 +48,9 @@ class CartItem extends React.Component
                        <img   style={styles.image}/>
                    </div>
                    <div className='right-block'>
-           <div style={{fontSize:20}} >{props.name}</div>
-           <div style={{color:'#777'}} >Rs {p.price}</div>
-           <div style={{color:'#777'}} >{p.qty}</div>
+           <div style={{fontSize:20}} >{name}</div>
+           <div style={{color:'#777'}} >Rs {price}</div>
+           <div style={{color:'#777'}} >{qty}</div>
                     <div className='cart-item-actions'>
                         <img className='action-icons'
                         alt='increase'
