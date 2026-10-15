@@ -1,16 +1,21 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ShoppingCart Gate 6 Pilot
 
-## Shoping Cart Using Firebase Frontend In React
+This repository is the controlled external-repository pilot for the coding-agent workflow. It is a deterministic React and TypeScript application with no runtime dependency on Firebase or other external services.
 
-## Available Scripts
+## Commands
 
-In the project directory, you can run:
+```bash
+npm ci
+npm run format:check
+npm run lint
+npm run typecheck
+npm run test:unit
+npm run test:integration
+npm run build
+npm run test:migrations
+npm run check:licenses
+```
 
-### `npm start`
+All verification commands run without network access after the lockfile-pinned dependency cache has been built. The Gate 6 worker invokes these commands through a server-owned quality profile; an agent cannot replace them.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-
-
-
+The first coding-agent task will add a tested, accessible empty-cart state. That behavior is intentionally absent from this baseline.
